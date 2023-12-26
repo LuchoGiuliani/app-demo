@@ -34,12 +34,12 @@ const ExploreTabs = ({ hashtags, users ,initialTab}: ExploreTabsProps) => {
     <>
       <div className="flex justify-evenly mb-4">
         <Link href="/explore?type=HASHTAGS" >
-       <div className={`cursor-pointer ${tab === TabView.HASHTAGS ? "border-blue-400 border-b-2 " :"" }`}>
+       <div className={`cursor-pointer text-white ${tab === TabView.HASHTAGS ? "border-blue-400 text-white border-b-2 " :"" }`}>
           Hashtags
           </div>
         </Link>
         <Link href="/explore?type=USERS">
-        <div  className={`cursor-pointer  ${tab === TabView.USERS ? "border-blue-400 border-b-2 " :"" }`}>Usuarios</div>
+        <div  className={`cursor-pointer text-white  ${tab === TabView.USERS ? "border-blue-400 text-white border-b-2 " :"" }`}>Usuarios</div>
         </Link>
       </div>
       <div>

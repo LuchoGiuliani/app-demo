@@ -18,10 +18,10 @@ const UserTabs = ({ messages, replies }: UserTabsProps) => {
   return (
     <>
       <div className="flex justify-evenly mb-4">
-        <div onClick={()=> setTab(TabView.MESSAGES)} className={`cursor-pointer ${tab === TabView.MESSAGES ? "border-blue-400 border-b-2 " :"" }`}>
+        <div onClick={()=> setTab(TabView.MESSAGES)} className={`cursor-pointer text-white ${tab === TabView.MESSAGES ? "border-blue-400 text-white border-b-2 " :"" }`}>
           Mensajes
         </div>
-        <div onClick={()=> setTab(TabView.REPLIES)} className={`cursor-pointer  ${tab === TabView.REPLIES ? "border-blue-400 border-b-2 " :"" }`}>Respuestas</div>
+        <div onClick={()=> setTab(TabView.REPLIES)} className={`cursor-pointer text-white  ${tab === TabView.REPLIES ? "border-blue-400 text-white border-b-2 " :"" }`}>Respuestas</div>
       </div>
       <div>
         {tab === TabView.MESSAGES && messages.map((message, index) => (

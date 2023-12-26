@@ -15,7 +15,7 @@ const Message = ( {message}:MessageProps)=> {
   const router = useRouter()
     return <>
           <UserCard user ={message.user}  >
-            <p className="">{message.message}</p>
+            <p className="text-white">{message.message}</p>
             <div>
               <RepliesCounter count={message.repliesCount} 
               onClick={()=> router.push(`/messages/${message.id}`)}/> 

@@ -1,7 +1,4 @@
-export type TrendingHashTag = {
+export type TrendingHashtag = {
     hash: string;
     count: number;
-    content: []
-    
-   
 }

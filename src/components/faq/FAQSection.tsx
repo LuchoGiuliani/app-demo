@@ -8,7 +8,7 @@ type FAQSectionProps = {
 
 const FAQSection = ({sections}: FAQSectionProps) => {
   return (
-    <section className="bg-gray-900 h-screen">
+    <section className="bg-slate-800 h-screen">
       <h1 className="text-white font-semibold text-2xl">Preguntas frecuentes</h1>
       <div className="grid grid-cols-12 gap-4">
         {sections.map(section =>  <FAQCard key={section.attributes.slug} label={section.attributes.title} href={`/faq${section.attributes.slug}`}/>)}

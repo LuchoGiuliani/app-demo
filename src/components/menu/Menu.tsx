@@ -13,7 +13,7 @@ const Menu = ({ links }: MenuProps) => {
           links.map((link, index) => (
             <li key={`menu-link-${index}`} className="text-2xl pb-2 w-full">
               <Link
-                className="p-2 w-full flex hover:bg-blue-400 hover:text-white"
+                className="p-2 w-full flex text-white hover:bg-blue-400 hover:text-slate-200"
                 href={link.href}
               >
                {link.title}

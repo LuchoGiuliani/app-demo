@@ -12,9 +12,9 @@ type  InputTextProps = {
 const InputText = ({label,placeholder,fieldName,type}: InputTextProps) => {
     const {register,formState:{errors}} = useFormContext()
 
- return  <div>
- <label>{label}</label>
- <input {...register(fieldName)} type={type} placeholder={placeholder} />
+ return  <div className="flex gap-4 justify-between ">
+ <label className="">{label}</label>
+ <input className="text-black" {...register(fieldName)} type={type} placeholder={placeholder} />
  {errors && errors[fieldName] && <div>Este campo es incorrecto</div>}
 </div>
 

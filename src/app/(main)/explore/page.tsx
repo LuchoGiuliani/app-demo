@@ -13,7 +13,7 @@ const ExplorePage = async ({searchParams}: {searchParams?: {[key:string]:string 
 
   return (
     <>
-      <main className="flex flex-col bg-gray-800 p-8">
+      <main className="flex flex-col bg-slate-800 p-8">
         <section className="flex flex-col mb-8">
             <ExploreTabs hashtags={hashes} users={users} initialTab={searchParams?.type} />
         </section>

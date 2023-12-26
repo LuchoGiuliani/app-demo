@@ -1,6 +1,6 @@
 "use client";
 
-import useMessages, { MessageProvider } from "@/components/contexts/message.context";
+import useMessages, { MessageProvider } from "@/contexts/message.context";
 import Message from "@/components/messages/Message";
 import MessageList from "@/components/messages/MessageList";
 import MessagePostForm from "@/components/messages/MessagePostForm";

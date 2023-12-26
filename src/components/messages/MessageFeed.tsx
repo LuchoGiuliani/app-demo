@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import Message from "./Message";
 import messageApi from "@/services/messages/messages.service";
-import useMessages from "../contexts/message.context";
+import useMessages from "../../contexts/message.context";
 
 
 

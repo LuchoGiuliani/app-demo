@@ -1,23 +1,20 @@
-import FAQCard from "@/components/faq/FAQCard";
-import FAQSection from "@/components/faq/FAQsection";
-import faqsApi from "@/services/faqs/faqs.service";
-import Link from "next/link";
+import FAQSection from '@/components/faq/FAQSection'
+import faqsApi from '@/services/faqs/faqs.service'
 
-export default async function FAQPage({params}:{params:{slug:string}}) {
+export default async function FAQPage({params}: {params}) {
   const faqPages = await faqsApi.getFAQPages();
-  const faqPage = faqPages.data.find(page => page.attributes.slug === `/${params.slug}`);
-
-  
-
+  const faqPage = faqPages.data.find(page => page.attributes.slug === `/${params.slug}`)
 
   return (
-    <main>
-      <FAQSection sections={faqPages.data} />
-      <section>
-        <h1>{faqPage?.attributes.title}</h1>
-        <div>{JSON.stringify(faqPage?.attributes.body)}</div>
+    <>
+        <main>
+            <FAQSection sections={faqPages.data}/>
+            <section className='flex flex-col'>
+                <h2>{faqPage?.attributes.title}</h2>
 
-      </section>
-    </main>
-  );
+                <div>{faqPage?.attributes.body}</div>
+            </section>
+        </main>
+     </>
+  )
 }

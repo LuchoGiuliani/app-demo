@@ -31,14 +31,14 @@ const SearchBar = ({initialQuery}:SearchBarProps) => {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
+      <div className="">
+        <form className="flex justify-between pb-4 border-b" onSubmit={handleSubmit(onSubmit)}>
+          <input className="rounded-sm"
             {...register("query")}
             type="text"
             placeholder={"Buscar por #Fuerza, #Jedi, Etc.."}
           />
-          <button>Buscar</button>
+          <button className="text-white font-bold bg-slate-600 p-2 rounded-md hover:bg-slate-500">Buscar</button>
         </form>
       </div>
     </>

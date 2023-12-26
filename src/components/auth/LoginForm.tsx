@@ -1,68 +1,71 @@
-"use client";
+"use client"
 
-
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
-import { log } from "console";
 import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import LoginScheme from "@/schemes/login.scheme";
 import SubmitButton from "../form/SubmitButton";
 import InputText from "../form/InputText";
-import authApi from "@/services/auth/auth.service";
-import { useState } from "react";
+import authApi from "@/services/auth/auth.api";
 import { AccessDeniedError } from "@/services/common/http.errors";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type FormData = {
-  username: string;
-  password: string;
-};
-
-const schema = yup.object({
-    username: yup.string().required(),
-    password: yup.string().required()
-}).required();
+    username: string;
+    password: string;
+}
 
 const LoginForm = () => {
-    const router = useRouter()
-    const [serverError,setServerError] = useState<string | null>(null)
-    const methods = useForm<FormData>({
-        resolver: yupResolver(schema),
-      })
-      const {register,handleSubmit,formState:{errors}} = methods
-      
-    const onSubmit = async(data:FormData) => {
-      setServerError(null)
-      try{
-      const loginResponse = await authApi.login(data.username, data.password)
-        console.log(JSON.stringify(loginResponse));
-        router.push("/")
-      }catch(e){
-        if(e instanceof AccessDeniedError){
-          setServerError("Tus credenciales son inválidas")
-        }else{
-          setServerError("Ha ocurrido un problema, intente más tarde")
-        }
-      }
-        return false
-        
 
+    const router = useRouter();
+    const [serverError, setServerError] = useState<string | null>(null);
+    const methods = useForm<FormData>({
+        resolver: yupResolver(LoginScheme)
+    });
+    const {handleSubmit} = methods;
+
+    const onSubmit = async (data: FormData) => {
+        setServerError(null);
+        try{
+            const loginResponse = await authApi.login(data.username, data.password);
+            console.log(data);
+            console.log(loginResponse);
+            
+            
+            console.log(JSON.stringify(loginResponse));
+            router.push("/");
+            router.refresh();
+        }catch(e){
+         console.error("Error during login:", e);
+            if (e instanceof AccessDeniedError){
+                setServerError("Tus credenciales son inválidas");
+            }else{
+                setServerError("Ha ocurrido un error. Intente mas tarde");
+            }
+        }
+        return false;
     }
 
-  return (
-    <FormProvider {...methods}>
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} action="">
-        <InputText label={"Nombre de usuario"} fieldName={"username"} placeholder="Anakin Skywalker" type="text"/>
-        <InputText label={"Contraseña:"} fieldName={"password"} placeholder="contraseña" type="password" />
-        <SubmitButton label={"iniciar sesión"} onSubmit={onSubmit} />
-        {serverError &&
-         <div>{serverError}</div>
-        }
-        
-      </form>
-    </div>
-    </FormProvider>
-  );
-};
+    return <FormProvider {...methods}>
+        <form className="text-white border-2 p-4 flex flex-col gap-4  rounded-md" onSubmit={handleSubmit(onSubmit)}>
+            <InputText  label={"Nombre de usuario:"}
+                fieldName={"username"} 
+                placeholder="anakin"
+                type="text"
+             />
+             <InputText label={"Contraseña:"}
+                fieldName={"password"} 
+                placeholder="Anakin Skywalker"
+                type="password"
+             />
+            <SubmitButton label={"Iniciar sesión"} 
+                onSubmit={onSubmit} 
+                />
+            {serverError && 
+                <div className="mt-4 text-red-600">{serverError}</div>
+            }
+        </form>
+</FormProvider>
+}
 
 export default LoginForm;
