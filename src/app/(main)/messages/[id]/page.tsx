@@ -17,7 +17,7 @@ const MessagePage = async ({params} : {params: {id: string}}) => {
         <MessagePageContainer message={message}
             repliesPage={repliesPage}
             parentId={params.id}
-            currentUser={currentUser}
+        //    currentUser={currentUser} 
         />
     </main>
 }

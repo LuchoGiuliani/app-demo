@@ -15,4 +15,5 @@ export type UserType = BaseUser & {
 	"followingCount": number,
 	"messageCount": number,
 	"createdAt": string,
+	
 }
